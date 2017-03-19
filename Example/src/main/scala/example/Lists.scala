@@ -28,7 +28,7 @@ object Lists {
       case true => return 0
       case _ => return xs.head + sum(xs.tail)
     }
-  
+
   /**
    * This method returns the largest element in a list of integers. If the
    * list `xs` is empty it throws a `java.util.NoSuchElementException`.
@@ -42,5 +42,11 @@ object Lists {
    * @return The largest element in `xs`
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
-    def max(xs: List[Int]): Int = ???
+    def max(xs: List[Int]): Int = xs.isEmpty match {
+      case true => return 0
+      case _ => (xs.head > max(xs.tail)) match {
+        case true => return xs.head
+        case _ => return max(xs.tail)
+      }
+    }
   }
