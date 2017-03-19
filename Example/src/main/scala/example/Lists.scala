@@ -43,8 +43,9 @@ object Lists {
    * @throws java.util.NoSuchElementException if `xs` is an empty list
    */
     def max(xs: List[Int]): Int = xs.isEmpty match {
-      case true => return 0
-      case _ => (xs.head > max(xs.tail)) match {
+      //case true => return Int.MinValue
+      case true => throw new java.util.NoSuchElementException("Empty string given as argument")
+      case _ => if (xs.tail.isEmpty) Int.MinValue else (xs.head > max(xs.tail)) match {
         case true => return xs.head
         case _ => return max(xs.tail)
       }

@@ -1,7 +1,9 @@
 package example
 
-import org.scalatest.FunSuite
+import java.util.NoSuchElementException
 
+import example.Lists.max
+import org.scalatest.FunSuite
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
@@ -47,7 +49,7 @@ import org.scalatest.junit.JUnitRunner
    * This allows tests to be written in a more readable manner:
    */
   test("one plus one is three?") {
-    assert(1 + 1 == 3) // This assertion fails! Go ahead and fix it.
+    assert(1 + 1 == 2) // This assertion fails! Go ahead and fix it.
   }
 
 
@@ -72,7 +74,7 @@ import org.scalatest.junit.JUnitRunner
    * We recommend to always use the `===` equality operator when writing tests.
    */
   test("details why one plus one is not three") {
-    assert(1 + 1 === 3) // Fix me, please!
+    assert(1 + 1 === 2) // Fix me, please!
   }
 
   /**
@@ -115,12 +117,20 @@ import org.scalatest.junit.JUnitRunner
    */
   test("sum of a few numbers") {
     assert(sum(List(1,2,0)) === 3)
+    assert(sum(List(-2,2,5)) === 5)
+    assert(sum(List(-2,-5, -3)) === -10)
   }
 
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+    assert(max(List(3, 9, -5)) === 9)
+    assert(max(List(3, 8888, 0)) === 8888)
+    assert(max(List(-5, -10, -99)) === -5)
   }
 
-
+//  test("exception test") {
+//    intercept(java.util.NoSuchElementException)
+//      assert(max(List()) === 7)
+//  }
 
 }
